@@ -1,0 +1,23 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: board-service
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLInnoDBDialect
+        format_sql: 'true'
+      database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: 'true'
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+file: E:\MSA\board\boardService\src\main\resources\static
