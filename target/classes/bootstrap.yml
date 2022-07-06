@@ -1,0 +1,8 @@
+#최상위로 읽힘
+#7070에 있는 config가져와라
+spring:
+  cloud:
+    config:
+      uri: http://localhost:7070
+      name: config
+      profile: dev
