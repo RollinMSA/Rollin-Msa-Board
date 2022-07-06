@@ -4,8 +4,8 @@ spring:
   application:
     name: board-service
   datasource:
-    url: jdbc:mysql://localhost:3306/board2?serverTimezone=UTC&characterEncoding=UTF-8
-    username: root
+    url: jdbc:mysql://192.168.0.47:3306/board2?serverTimezone=UTC&characterEncoding=UTF-8
+    username: jeongho
     password: 1234
 
 eureka:
