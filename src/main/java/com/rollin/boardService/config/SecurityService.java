@@ -41,7 +41,7 @@ public class SecurityService {
                 .setExpiration(new Date(System.currentTimeMillis()+expTime))
                 .compact();
     }
-    public String getSubject(String tokenBearer){
+    public Claims getSubject(String tokenBearer){
         String token=tokenBearer.substring("Bearer ".length()) ; //Authorization에 담아 보낼땐 Bearer를 토큰 앞에 붙여서 보내야하기 때문에(약속이다) token에 Bearer가 앞에 붙여져 있으니 잘라준다
         log.info(token);
         Claims claims=Jwts.parserBuilder()
@@ -49,9 +49,10 @@ public class SecurityService {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
-        return claims.getSubject();
+//        return claims.getSubject();
+        return claims;
     }
-    public Integer getIdAtToken(){
+    public Claims getIdAtToken(){
 
         //header에서 빼오는 작업
         ServletRequestAttributes requestAttributes =
@@ -61,7 +62,7 @@ public class SecurityService {
         String id=request.getHeader("Authorization");//token을 parameter로 보내는게 아니라 header에 Authorization로 담아 보낸다
         log.info(id);
 
-        return Integer.parseInt(getSubject(id));
+        return getSubject(id);
 
     }
 }

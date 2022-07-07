@@ -28,4 +28,8 @@ public class BoardEntity {
     private String img;
     @Column(name="date")
     private LocalDateTime date=LocalDateTime.now();
+    @Column(name="userName")
+    private String userName;
+    @Column(name="userImg")
+    private String userImg;
 }

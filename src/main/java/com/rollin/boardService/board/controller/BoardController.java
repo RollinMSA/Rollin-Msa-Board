@@ -26,8 +26,9 @@ public class BoardController {
     @PostMapping("/")
     public Boolean postBoard(@RequestBody BoardEntity boardEntity){
         log.info(String.valueOf(securityService.getIdAtToken()));
-
-        boardEntity.setUserId(securityService.getIdAtToken());
+        boardEntity.setUserId(Integer.valueOf(securityService.getIdAtToken().getSubject()));
+        boardEntity.setUserName(String.valueOf(securityService.getIdAtToken().get("name")));
+        boardEntity.setUserImg(String.valueOf(securityService.getIdAtToken().get("img")));
         return boardService.postBoard(boardEntity);
     }
 
